@@ -1,47 +1,145 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
-<head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/a.css') }}">
-  
-</head>
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>ML API</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/a.css') }}"
+    />
+  </head>
 
-<body>
- <div class="login">
-	<h1>Predict Salary Analysis</h1>
+  <body>
+    <div class="login">
+      <h1>Predict Salary Analysis</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
-        <input type="text" name="score_4" placeholder="Last Score" required="required" />
-        <input type="text" name="score_5" placeholder="Last Score" required="required" />
-        <input type="text" name="score_6" placeholder="Last Score" required="required" />
-        <input type="text" name="score_7" placeholder="Last Score" required="required" />
-        <input type="text" name="score_8" placeholder="Last Score" required="required" />
-        <input type="text" name="score_9" placeholder="Last Score" required="required" />
-        <input type="text" name="score_10" placeholder="Last Score" required="required" />
-        <input type="text" name="score_11" placeholder="Last Score" required="required" />
-        <input type="text" name="score_12" placeholder="Last Score" required="required" />
-        <input type="text" name="score_13" placeholder="Last Score" required="required" />
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <h3>Age</h3>
+        <input
+          type="text"
+          name="experience"
+          placeholder="age"
+          required="required"
+        />
 
+        <h3>sex</h3>
+        <select id="sex" name="sex" class="form-control">
+          <option id="male" value="0">Male</option>
+          <option id="female" value="1">Female</option>
+        </select>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+        <h3>chest pain types</h3>
+        <select id="chest" name="chest" class="form-control">
+          <option value="0">Type 0</option>
+          <option value="1">Type 1</option>
+          <option value="2">Type 2</option>
+          <option value="3">Type 3</option>
+        </select>
 
-   <br>
-   <br>
-   {{ prediction_text }}
+        <h3>resting blood pressure</h3>
+        <input
+          type="text"
+          name="score_4"
+          placeholder="Last Score"
+          required="required"
+        />
 
- </div>
+        <h3>serum cholestoral</h3>
+        <input
+          type="text"
+          name="score_5"
+          placeholder="mg/dl"
+          required="required"
+        />
 
+        <h3>blood sugar</h3>
+        <select id="sugar" name="sugar" class="form-control">
+          <option value="0">under 120mg/dl</option>
+          <option value="1">above 120mg/dl</option>
+        </select>
 
-</body>
+        <h3>resting ECG result</h3>
+        <select id="ecg" name="ecg" class="form-control">
+          <option value="0">value 1</option>
+          <option value="1">value 2</option>
+          <option value="2">value 3</option>
+        </select>
+
+        <h3>maximum heart rate</h3>
+        <input
+          type="text"
+          name="score_8"
+          placeholder="bpm"
+          required="required"
+        />
+
+        <h3>excercise induced angina</h3>
+        <select id="angina" name="angina" class="form-control">
+          <option value="0">yes</option>
+          <option value="1">no</option>
+        </select>
+
+        <h3>ST depression induced by exercise</h3>
+        <input
+          type="text"
+          name="score_10"
+          placeholder="oldpeak"
+          required="required"
+        />
+
+        <h3>slope of peak</h3>
+        <select id="slope" name="slope" class="form-control">
+          <option value="0">1</option>
+          <option value="1">2</option>
+          <option value="2">3</option>
+        </select>
+
+        <h3>number of major vessel by flouroscopy</h3>
+        <select id="vessel" name="vessel" class="form-control">
+          <option value="0">none</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <h3>thal</h3>
+        <select id="thal" name="thal" class="form-control">
+          <option value="0">normal</option>
+          <option value="1">fixed defect</option>
+          <option value="2">reversable defect</option>
+        </select>
+
+        <br />
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict
+        </button>
+      </form>
+
+      <br />
+      <br />
+      {{ prediction_text }}
+    </div>
+  </body>
 </html>
