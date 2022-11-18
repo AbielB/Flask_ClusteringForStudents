@@ -9,117 +9,133 @@
 </head>
 <body>
   <header>
-    <h1>Predict Salary Analysis</h1>
+    <h1>Predict Salary Analysis</h1><hr>
   </header>
 
   <main>
-      <!-- Main Input For Receiving Query to our ML -->
+    <section>
       <form action="{{ url_for('predict')}}" method="post">
-        <h3>Age</h3>
-        <input
-          type="text"
-          name="experience"
-          placeholder="age"
-          required="required"
-        />
+        <div class="flex__display">
+          <div>
+            <div>
+              <label for="age"><h3>Age</h3></label>
+              <input type="number" name="age" placeholder="age" required="required" />
+            </div>
+    
+            <div>
+              <label for="sex"><h3>Sex</h3></label>
+              <select id="sex" name="sex" class="form-control">
+                <option id="male" value="0">Male</option>
+                <option id="female" value="1">Female</option>
+              </select>
+            </div>
+    
+            <div>
+              <label for="chest"><h3>Chest Pain Types</h3></label>
+              <select id="chest" name="chest" class="form-control">
+                <option value="0">Type 0</option>
+                <option value="1">Type 1</option>
+                <option value="2">Type 2</option>
+                <option value="3">Type 3</option>
+              </select>
+            </div>
+    
+            <div>
+              <label for=""><h3>Resting Blood Pressure</h3></label>
+              <input type="text" name="score_4" placeholder="mm Hg" required="required"/>
+            </div>
+    
+            <div>
+              <label for=""><h3>Serum Cholestoral</h3></label>
+              <input type="text" name="score_5" placeholder="mg/dl" required="required" />
+            </div>
+    
+            <div>
+              <label for=""><h3>Blood Sugar</h3></label>
+              <select id="sugar" name="sugar" class="form-control">
+                <option value="0">under 120mg/dl</option>
+                <option value="1">above 120mg/dl</option>
+              </select>
+            </div>
 
-        <h3>sex</h3>
-        <select id="sex" name="sex" class="form-control">
-          <option id="male" value="0">Male</option>
-          <option id="female" value="1">Female</option>
-        </select>
-
-        <h3>chest pain types</h3>
-        <select id="chest" name="chest" class="form-control">
-          <option value="0">Type 0</option>
-          <option value="1">Type 1</option>
-          <option value="2">Type 2</option>
-          <option value="3">Type 3</option>
-        </select>
-
-        <h3>resting blood pressure</h3>
-        <input
-          type="text"
-          name="score_4"
-          placeholder="mm Hg"
-          required="required"
-        />
-
-        <h3>serum cholestoral</h3>
-        <input
-          type="text"
-          name="score_5"
-          placeholder="mg/dl"
-          required="required"
-        />
-
-        <h3>blood sugar</h3>
-        <select id="sugar" name="sugar" class="form-control">
-          <option value="0">under 120mg/dl</option>
-          <option value="1">above 120mg/dl</option>
-        </select>
-
-        <h3>resting ECG result</h3>
-        <select id="ecg" name="ecg" class="form-control">
-          <option value="0">value 1</option>
-          <option value="1">value 2</option>
-          <option value="2">value 3</option>
-        </select>
-
-        <h3>maximum heart rate</h3>
-        <input
-          type="text"
-          name="score_8"
-          placeholder="bpm"
-          required="required"
-        />
-
-        <h3>excercise induced angina</h3>
-        <select id="angina" name="angina" class="form-control">
-          <option value="0">yes</option>
-          <option value="1">no</option>
-        </select>
-
-        <h3>ST depression induced by exercise</h3>
-        <input
-          type="text"
-          name="score_10"
-          placeholder="oldpeak"
-          required="required"
-        />
-
-        <h3>slope of peak</h3>
-        <select id="slope" name="slope" class="form-control">
-          <option value="0">1</option>
-          <option value="1">2</option>
-          <option value="2">3</option>
-        </select>
-
-        <h3>number of major vessel by flouroscopy</h3>
-        <select id="vessel" name="vessel" class="form-control">
-          <option value="0">none</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-
-        <h3>thal</h3>
-        <select id="thal" name="thal" class="form-control">
-          <option value="0">normal</option>
-          <option value="1">fixed defect</option>
-          <option value="2">reversable defect</option>
-        </select>
-
-        <br />
-        <button type="submit" class="btn btn-primary btn-block btn-large">
-          Predict
-        </button>
+            <div>
+              <label for=""><h3>Resting ECG Result</h3></label>
+              <select id="ecg" name="ecg" class="form-control">
+                <option value="0">value 1</option>
+                <option value="1">value 2</option>
+                <option value="2">value 3</option>
+              </select>
+            </div>
+          </div>
+  
+          <div>
+            <div>
+              <label for="score_8"><h3>Maximum Heart Rate</h3></label>
+              <input type="number" name="score_8" placeholder="bpm" required="required" />
+            </div>
+    
+            <div>
+              <label for=""><h3>Excercise Induced Angina</h3></label>
+              <select id="angina" name="angina" class="form-control">
+                <option value="0">Yes</option>
+                <option value="1">No</option>
+              </select>
+            </div>
+    
+            <div>
+              <label for=""><h3>ST Depression Induced by Exercise</h3></label>
+              <input type="number" name="score_10" placeholder="oldpeak" required="required" />
+            </div>
+    
+            <div>
+              <label for=""><h3>Slope of Peak</h3></label>
+              <select id="slope" name="slope" class="form-control">
+                <option value="0">1</option>
+                <option value="1">2</option>
+                <option value="2">3</option>
+              </select>
+            </div>
+    
+            <div>
+              <label for=""><h3>Number of Major Vessel by Flouroscopy</h3></label>
+              <select id="vessel" name="vessel" class="form-control">
+                <option value="0">none</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+    
+            <div>
+              <h3>thal</h3>
+              <select id="thal" name="thal" class="form-control">
+                <option value="0">Normal</option>
+                <option value="1">Fixed Defect</option>
+                <option value="2">Reversable Defect</option>
+              </select>
+            </div>
+          </div>
+        </div>
+    
+        <div class="button__container">
+          <div class="vertical__center">
+            <button type="submit" class="btn btn-primary btn-block btn-large">
+              Predict
+            </button>
+          </div>
+        </div>
       </form>
+    </section>
+        
+    <section>
+      <div class="prediction__text">
+        <h2>{{ prediction_text }}</h2>
+      </div>
+    </section>
 
-      <br />
-      <br />
-      {{ prediction_text }}
-    </div>
+    <footer>
+      <p>Copyright &copy; 2022</p>
+    </footer>
   </main>
 </body>
 </html>
