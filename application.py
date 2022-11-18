@@ -19,9 +19,9 @@ def predict():
     prediction = model.predict(final_features)
     output = format(prediction)
     if output == "[0.]":
-        hasil = "normal"
+        hasil = "Normal"
     else:
-        hasil = "ada penyakit"
+        hasil = "Ada Penyakit"
 
     return render_template('index.html', prediction_text= hasil)
 
