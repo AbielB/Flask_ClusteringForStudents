@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Predict Heart Disease</title>
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <h1>Clustering of students</h1>
-
-    <div id="mainbody">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <title>Student Clustering</title>
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Student Clustering</h1>
+  </header>
       <!-- Main Input For Receiving Query to our ML -->
       <form action="{{ url_for('predict')}}" method="post">
-        <h3>sex</h3>
+        <div id="maindiv">
+        <h3>Gender</h3>
         <select id="sex" name="sex" class="form-control">
-          <option id="male" value="0">Male</option>
-          <option id="female" value="1">Female</option>
+          <option id="female" value="0">Female</option>
+          <option id="male" value="1">Male</option>
         </select>
 
-        <h3>race</h3>
-        <select id="chest" name="chest" class="form-control">
+        <h3>Race</h3>
+        <!--select dropdown value 'group A':0,'group B':1,'group C':2,'group D':3,'group E':4-->
+        <select id="race" name="race" class="form-control">
           <option value="0">South American</option>
-          <option value="1">European/North American</option>
+          <option value="1">North American/European</option>
           <option value="2">Indian</option>
           <option value="3">East Asian</option>
           <option value="4">African</option>
         </select>
 
-        <h3>Parent's education</h3>
-        <!--dropdown select value 'some high school': 0, 'high school': 1, 'some college': 2, 'associate\'s degree': 3, 'bachelor\'s degree': 4, 'master\'s degree': 5-->
-        <select id="education" name="education" class="form-control">
+        <h3>Parent's Education</h3>
+        <!--select dropdown value 'some high school':0,'high school':1,'some college':2,'associate's degree':3,'bachelor's degree':4,'master's degree':5-->
+        <select id="parental_education" name="parental_education" class="form-control">
           <option value="0">Some High School</option>
           <option value="1">High School</option>
           <option value="2">Some College</option>
@@ -49,33 +42,30 @@
           <option value="4">Bachelor's Degree</option>
           <option value="5">Master's Degree</option>
         </select>
-        <h3>Lunch Option</h3>
-        <!--dropdown select value 'Free/reduced': 0 'standard':1-->
+
+        <h3>Lunch</h3>
+        <!--select dropdown value 'standard':0,'free/reduced':1-->
         <select id="lunch" name="lunch" class="form-control">
-          <option value="0">Free/Reduced</option>
-          <option value="1">Standard</option>
+          <option value="0">Standard</option>
+          <option value="1">Free/Reduced</option>
         </select>
 
         <h3>Test Preparation</h3>
-        <!--dropdown select value 'none': 0 'completed':1-->
-        <select id="testprep" name="testprep" class="form-control">
+        <!--select dropdown value 'none':0,'completed':1-->
+        <select id="test_preparation" name="test_preparation" class="form-control">
           <option value="0">None</option>
           <option value="1">Completed</option>
         </select>
-
+        
         <br />
-        <button
-          type="submit"
-          id="submit"
-          class="btn btn-danger btn-block btn-large"
-        >
+        <button type="submit" class="btn btn-primary btn-block btn-large" id="submit">
           Predict
         </button>
       </form>
     </div>
 
-    <br />
-    <br />
-    <p id="answer">{{ prediction_text }}</p>
-  </body>
+      <br />
+      <br />
+      <p id="predict">{{ prediction_text }}</p>
+</body>
 </html>
