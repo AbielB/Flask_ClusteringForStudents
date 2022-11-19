@@ -1,8 +1,7 @@
-*Website for clustering student data*
+*Website for clustering student data using Flask*
 ---
 **Clustering using K-Means algorithm**
-****data source: https://www.kaggle.com/datasets/whenamancodes/students-performance-in-exams?resource=download****
-****Made using flask****
+data source: https://www.kaggle.com/datasets/whenamancodes/students-performance-in-exams?resource=download
 ---
 to run:
 1. install flask and numpy
