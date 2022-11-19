@@ -1,6 +1,6 @@
 *Website for clustering student data*
 ---
-**Clustering algorithm used: K-Means**
+**Clustering using K-Means algorithm**
 ***data source: https://www.kaggle.com/datasets/whenamancodes/students-performance-in-exams?resource=download***
 ****Made using flask****
 ---
