@@ -20,11 +20,11 @@ def predict():
     output = format(prediction)
     
     if output == "[0]":
-        hasil = "Cluster 1, Student is likely to have below average scores"
+        hasil = "Cluster 1, Student is likely to have average scores"
     elif output == "[1]":
-        hasil = "Cluster 2, Student is likely to have good scores"
+        hasil = "Cluster 2, Student is likely to have bad scores"
     else:
-        hasil = "Cluster 3, Student is likely to have average scores"
+        hasil = "Cluster 3, Student is likely to have good scores"
 
     return render_template('index.html', prediction_text= hasil)
 

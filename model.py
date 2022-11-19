@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn import model_selection
 from sklearn.tree import DecisionTreeClassifier
 
-data = pd.read_csv('hasil_cluster2.csv')
+data = pd.read_csv('hasil_cluster.csv')
 #make classification with Decision Tree
 X = data.iloc[:, 0:5]
 y = data.iloc[:, 5]
