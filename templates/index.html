@@ -1,125 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predict Salary Analysis</title>
-  <link rel="stylesheet" href="./static/css/style.css">
-</head>
-<body>
-  <header>
-    <h1>Predict Salary Analysis</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predict Heart Disease</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Clustering of students</h1>
 
-  <main>
+    <div id="mainbody">
       <!-- Main Input For Receiving Query to our ML -->
       <form action="{{ url_for('predict')}}" method="post">
-        <h3>Age</h3>
-        <input
-          type="text"
-          name="experience"
-          placeholder="age"
-          required="required"
-        />
-
         <h3>sex</h3>
         <select id="sex" name="sex" class="form-control">
           <option id="male" value="0">Male</option>
           <option id="female" value="1">Female</option>
         </select>
 
-        <h3>chest pain types</h3>
+        <h3>race</h3>
         <select id="chest" name="chest" class="form-control">
-          <option value="0">Type 0</option>
-          <option value="1">Type 1</option>
-          <option value="2">Type 2</option>
-          <option value="3">Type 3</option>
+          <option value="0">South American</option>
+          <option value="1">European/North American</option>
+          <option value="2">Indian</option>
+          <option value="3">East Asian</option>
+          <option value="4">African</option>
         </select>
 
-        <h3>resting blood pressure</h3>
-        <input
-          type="text"
-          name="score_4"
-          placeholder="mm Hg"
-          required="required"
-        />
-
-        <h3>serum cholestoral</h3>
-        <input
-          type="text"
-          name="score_5"
-          placeholder="mg/dl"
-          required="required"
-        />
-
-        <h3>blood sugar</h3>
-        <select id="sugar" name="sugar" class="form-control">
-          <option value="0">under 120mg/dl</option>
-          <option value="1">above 120mg/dl</option>
+        <h3>Parent's education</h3>
+        <!--dropdown select value 'some high school': 0, 'high school': 1, 'some college': 2, 'associate\'s degree': 3, 'bachelor\'s degree': 4, 'master\'s degree': 5-->
+        <select id="education" name="education" class="form-control">
+          <option value="0">Some High School</option>
+          <option value="1">High School</option>
+          <option value="2">Some College</option>
+          <option value="3">Associate's Degree</option>
+          <option value="4">Bachelor's Degree</option>
+          <option value="5">Master's Degree</option>
+        </select>
+        <h3>Lunch Option</h3>
+        <!--dropdown select value 'Free/reduced': 0 'standard':1-->
+        <select id="lunch" name="lunch" class="form-control">
+          <option value="0">Free/Reduced</option>
+          <option value="1">Standard</option>
         </select>
 
-        <h3>resting ECG result</h3>
-        <select id="ecg" name="ecg" class="form-control">
-          <option value="0">value 1</option>
-          <option value="1">value 2</option>
-          <option value="2">value 3</option>
-        </select>
-
-        <h3>maximum heart rate</h3>
-        <input
-          type="text"
-          name="score_8"
-          placeholder="bpm"
-          required="required"
-        />
-
-        <h3>excercise induced angina</h3>
-        <select id="angina" name="angina" class="form-control">
-          <option value="0">yes</option>
-          <option value="1">no</option>
-        </select>
-
-        <h3>ST depression induced by exercise</h3>
-        <input
-          type="text"
-          name="score_10"
-          placeholder="oldpeak"
-          required="required"
-        />
-
-        <h3>slope of peak</h3>
-        <select id="slope" name="slope" class="form-control">
-          <option value="0">1</option>
-          <option value="1">2</option>
-          <option value="2">3</option>
-        </select>
-
-        <h3>number of major vessel by flouroscopy</h3>
-        <select id="vessel" name="vessel" class="form-control">
-          <option value="0">none</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-
-        <h3>thal</h3>
-        <select id="thal" name="thal" class="form-control">
-          <option value="0">normal</option>
-          <option value="1">fixed defect</option>
-          <option value="2">reversable defect</option>
+        <h3>Test Preparation</h3>
+        <!--dropdown select value 'none': 0 'completed':1-->
+        <select id="testprep" name="testprep" class="form-control">
+          <option value="0">None</option>
+          <option value="1">Completed</option>
         </select>
 
         <br />
-        <button type="submit" class="btn btn-primary btn-block btn-large">
+        <button
+          type="submit"
+          id="submit"
+          class="btn btn-danger btn-block btn-large"
+        >
           Predict
         </button>
       </form>
-
-      <br />
-      <br />
-      {{ prediction_text }}
     </div>
-  </main>
-</body>
+
+    <br />
+    <br />
+    <p id="answer">{{ prediction_text }}</p>
+  </body>
 </html>

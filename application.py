@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 
 application = Flask(__name__) #Initialize the flask App
-model = pickle.load(open('model_tree.pkl', 'rb'))
+model = pickle.load(open('student_tree.pkl', 'rb'))
 
 @application.route('/')
 def home():
@@ -18,10 +18,13 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
     output = format(prediction)
-    if output == "[0.]":
-        hasil = "normal"
+    
+    if output == "[0]":
+        hasil = "Cluster 1, Student is likely to have below average scores"
+    elif output == "[1]":
+        hasil = "Cluster 2, Student is likely to have good scores"
     else:
-        hasil = "ada penyakit"
+        hasil = "Cluster 3, Student is likely to have average scores"
 
     return render_template('index.html', prediction_text= hasil)
 
