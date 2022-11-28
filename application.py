@@ -19,12 +19,12 @@ def predict():
     prediction = model.predict(final_features)
     output = format(prediction)
     
-    if output == "[0]":
-        hasil = "Cluster 1, Student is likely to have average scores"
+    if output == "[2]":
+        hasil = "Cluster 2, Student has a higher probability of getting lower score"
     elif output == "[1]":
-        hasil = "Cluster 2, Student is likely to have bad scores"
+        hasil = "Cluster 1"
     else:
-        hasil = "Cluster 3, Student is likely to have good scores"
+        hasil = "Cluster 0"
 
     return render_template('index.html', prediction_text= hasil)
 
