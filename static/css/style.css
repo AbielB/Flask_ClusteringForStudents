@@ -13,6 +13,8 @@ h1{
     font-weight: bold;
     font-size: 40px;
     text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /* div id maindiv width 50% centered horizontally*/
@@ -20,9 +22,12 @@ h1{
     width: 50%;
     margin: 0 auto;
     border: 3px solid rgb(81, 26, 95);
-    border-radius: 10px;
+    border-radius: 50px;
     /*padding left right 1em top bottom 1.5em*/
     padding: 1.5em 1em;
+    margin-top: 1em !important;
+    /*shadow*/
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.24);
 }
 
 /*id predict center text color rgb(47, 27, 134) font size 40px*/
