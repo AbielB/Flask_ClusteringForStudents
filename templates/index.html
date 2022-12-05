@@ -15,21 +15,6 @@
       <form action="{{ url_for('predict')}}" method="post">
         <div id="maindiv">
         <h1>Student Clustering</h1>
-        <h3>Gender</h3>
-        <select id="sex" name="sex" class="form-control">
-          <option id="female" value="0">Female</option>
-          <option id="male" value="1">Male</option>
-        </select>
-
-        <h3>Race</h3>
-        <!--select dropdown value 'group A':0,'group B':1,'group C':2,'group D':3,'group E':4-->
-        <select id="race" name="race" class="form-control">
-          <option value="0">South American</option>
-          <option value="0.25">North American/European</option>
-          <option value="0.5">Indian</option>
-          <option value="0.75">East Asian</option>
-          <option value="1">African</option>
-        </select>
 
         <h3>Parent's Education</h3>
         <!--select dropdown value 'some high school':0,'high school':1,'some college':2,'associate's degree':3,'bachelor's degree':4,'master's degree':5-->
@@ -45,8 +30,8 @@
         <h3>Lunch</h3>
         <!--select dropdown value 'standard':0,'free/reduced':1-->
         <select id="lunch" name="lunch" class="form-control">
-          <option value="0">Standard</option>
-          <option value="1">Free/Reduced</option>
+          <option value="1">Standard</option>
+          <option value="0">Free/Reduced</option>
         </select>
 
         <h3>Test Preparation</h3>
@@ -66,5 +51,15 @@
       <br />
       <br />
       <p id="predict">{{ prediction_text }}</p>
+
+    <div id="cluster_info">
+      <h4>Cluster 1 Memiliki rata rata nilai yang paling tinggi.</h2>
+        <p>Untuk matematika 29% lebih tinggi</p>
+        <p>Untuk reading 27% lebih tinggi</p>
+        <p>Untuk writing 34% lebih tinggi</p>
+      <h4>dibanding Cluster terendah yaitu cluster 3</h2>
+    </div>
+      
+
 </body>
 </html>

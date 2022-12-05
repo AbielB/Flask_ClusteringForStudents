@@ -44,3 +44,8 @@ h1{
     margin: 0 auto;
     display: block;
 }
+
+#cluster_info {
+    /*center everything inside div*/
+    text-align: center;
+}
