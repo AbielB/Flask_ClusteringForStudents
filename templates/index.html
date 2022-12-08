@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <title>Student Clustering</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <title>Student Clustering</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div id="maindiv">
+      <h1>Student Clustering</h1>
+
+      <h3>Race</h3>
+      <!--select dropdown value 'group A':0,'group B':0.25,'group C':0.5,'group D':0.75,'group E':1 -->
+      <select id="race" name="race" class="form-control">
+        <option value="0">Group A</option>
+        <option value="0.25">Group B</option>
+        <option value="0.5">Group C</option>
+        <option value="0.75">Group D</option>
+        <option value="1">Group E</option>
+      </select>
+
+      <h3>Parent's Education</h3>
+      <!--select dropdown value 'some high school':0,'high school':1,'some college':2,'associate's degree':3,'bachelor's degree':4,'master's degree':5-->
+      <select
+        id="parental_education"
+        name="parental_education"
+        class="form-control"
+      >
+        <option value="0">Some High School</option>
+        <option value="0.2">High School</option>
+        <option value="0.4">Some College</option>
+        <option value="0.6">Associate's Degree</option>
+        <option value="0.8">Bachelor's Degree</option>
+        <option value="1">Master's Degree</option>
+      </select>
 
       <!-- Main Input For Receiving Query to our ML -->
       <form action="{{ url_for('predict')}}" method="post">
-        <div id="maindiv">
-        <h1>Student Clustering</h1>
-
-        <h3>Parent's Education</h3>
-        <!--select dropdown value 'some high school':0,'high school':1,'some college':2,'associate's degree':3,'bachelor's degree':4,'master's degree':5-->
-        <select id="parental_education" name="parental_education" class="form-control">
-          <option value="0">Some High School</option>
-          <option value="0.2">High School</option>
-          <option value="0.4">Some College</option>
-          <option value="0.6">Associate's Degree</option>
-          <option value="0.8">Bachelor's Degree</option>
-          <option value="1">Master's Degree</option>
+        <h3>Gender</h3>
+        <!--select dropdown value 'male' = 0, 'female' = 1 -->
+        <select id="gender" name="gender" class="form-control">
+          <option value="0">Male</option>
+          <option value="1">Female</option>
         </select>
 
         <h3>Lunch</h3>
@@ -36,38 +65,28 @@
 
         <h3>Test Preparation</h3>
         <!--select dropdown value 'none':0,'completed':1-->
-        <select id="test_preparation" name="test_preparation" class="form-control">
+        <select
+          id="test_preparation"
+          name="test_preparation"
+          class="form-control"
+        >
           <option value="0">None</option>
           <option value="1">Completed</option>
         </select>
-        
+
         <br />
-        <button type="submit" class="btn btn-primary btn-block btn-large" id="submit">
+        <button
+          type="submit"
+          class="btn btn-primary btn-block btn-large"
+          id="submit"
+        >
           Predict
         </button>
       </form>
     </div>
 
-      <br />
-      <br />
-      <p id="predict">{{ prediction_text }}</p>
-
-    <div id="cluster_info">
-      <p>Siswa yang mengambil test preparation memiliki rata rata nilai:</p>
-        <h5>10% lebih tinggi untuk yang mendapat standard lunch</h5>
-        <h5>13% lebih tinggi untuk yang mendapat free/reduced lunch</h5>
-      <p>Dibanding yang tidak mengambil</p>
-        <br>
-      <p>Siswa yang mendpat standard lunch Memiliki rata rata nilai:</p>
-        <h5>15% lebih tinggi untuk yang mengambil test preparation</h5>
-        <h5>17% lebih tinggi untuk yang tidak mengambil test preparation</h5>
-      <p>Dibanding yang mendapat free/reduced lunch</p>
-      <br>
-      <p>Siswa yang mengambil test preparation dan mendapat standard lunch memiliki nilai rata-rata:</p>
-      <h5>31% lebih tinggi</h5>
-      <p>Dibanding yang tidak mengambil test preparation dan hanya mendapat free/reduced lunch</p>
-    </div>
-      
-
-</body>
+    <br />
+    <br />
+    <p id="predict">{{ prediction_text }}</p>
+  </body>
 </html>

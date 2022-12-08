@@ -25,6 +25,8 @@ def predict():
         hasil = "Cluster 2"
     elif output == "[3]":
         hasil = "Cluster 4"
+    elif output == "[4]":
+        hasil = "Cluster 5"
     else:
         hasil = "Cluster 1"
 
